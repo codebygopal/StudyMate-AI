@@ -4,8 +4,9 @@ const geminiService = require('./geminiService');
  * Tool 1: answerAcademicQuestion
  * Explains an academic topic or solves a student doubt in clear, pedagogical terms.
  */
-async function answerAcademicQuestion({ query, subject = 'General Academic', context = '' }) {
-  if (!query || typeof query !== 'string') {
+async function answerAcademicQuestion({ query, question, doubt, userQuery, subject = 'General Academic', context = '' }) {
+  const effectiveQuery = query || question || doubt || userQuery;
+  if (!effectiveQuery || typeof effectiveQuery !== 'string') {
     throw new Error('Query parameter is required for answerAcademicQuestion.');
   }
 
@@ -22,13 +23,13 @@ Follow this pedagogical structure:
 Subject Domain: ${subject}
 Additional Context: ${context || 'None provided'}`;
 
-  const userPrompt = `Student Question: ${query}`;
+  const userPrompt = `Student Question: ${effectiveQuery}`;
   const answer = await geminiService.generateContent(userPrompt, systemPrompt);
 
   return {
     tool: 'answerAcademicQuestion',
     subject,
-    query,
+    query: effectiveQuery,
     answer,
     timestamp: new Date().toISOString(),
   };

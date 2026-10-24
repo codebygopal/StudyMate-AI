@@ -106,11 +106,16 @@ Available Task Count: ${tasks.length}`;
 
         const result = await geminiService.generateStructuredContent(prompt, systemPrompt);
         if (result && result.tool && tools[result.tool]) {
+          const params = result.parameters || {};
+          if (result.tool === 'answerAcademicQuestion') {
+            params.query = params.query || params.question || params.doubt || userMessage;
+            params.subject = params.subject || this.extractSubject((userMessage || '').toLowerCase()) || 'Computer Science';
+          }
           return {
             intent: result.intent || 'Academic assistance',
             tool: result.tool,
             reasoning: result.reasoning || 'Identified via LLM Intent Classification',
-            parameters: result.parameters || { query: userMessage },
+            parameters: params,
           };
         }
       } catch (err) {
