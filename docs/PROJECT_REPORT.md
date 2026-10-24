@@ -397,9 +397,14 @@ StudyMate AI is architected for seamless cloud deployment:
    - Root directory set to `client`.
    - Framework preset: `Vite`.
    - Build command: `npm run build`.
-   - Environment variable: `VITE_API_BASE_URL=https://<backend>.onrender.com`.
+   - Environment variable: `VITE_API_BASE_URL=https://study-mate-ai-bay.vercel.app`.
 
 ### 8.3 Production Verification
+- **Live Frontend URL:** https://study-mate-ai-jtvm.vercel.app
+- **Live Backend API URL:** https://study-mate-ai-bay.vercel.app
+- **Health Probe:** https://study-mate-ai-bay.vercel.app/api/health
+- **Agent Tools:** https://study-mate-ai-bay.vercel.app/api/agent/tools
+
 The deployed system was tested for end-to-end functionality. The frontend securely communicates with the backend, and the backend verifies the Gemini API handshake without exposing API credentials to client inspection tools.
 
 ---

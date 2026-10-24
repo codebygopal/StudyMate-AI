@@ -182,9 +182,12 @@ This project was developed for **Practical No. 10 (Agentic AI Development Lab)**
 
 ## 8. Deployment Summary
 
-- **Frontend:** Deployed on **Vercel** with continuous integration from the GitHub `main` branch.
-- **Backend:** Deployed on **Render** as a Node.js Web Service with guarded environment variables.
-- Full step-by-step instructions are available in [`docs/DEPLOYMENT_GUIDE.md`](./docs/DEPLOYMENT_GUIDE.md).
+- **Live Frontend (Vercel):** [https://study-mate-ai-jtvm.vercel.app](https://study-mate-ai-jtvm.vercel.app)
+- **Live Backend API (Vercel):** [https://study-mate-ai-bay.vercel.app](https://study-mate-ai-bay.vercel.app)
+- **API Health Check:** [https://study-mate-ai-bay.vercel.app/api/health](https://study-mate-ai-bay.vercel.app/api/health)
+- **Agent Tools Inspection:** [https://study-mate-ai-bay.vercel.app/api/agent/tools](https://study-mate-ai-bay.vercel.app/api/agent/tools)
+
+Full step-by-step instructions and architecture details are available in [`docs/DEPLOYMENT_GUIDE.md`](./docs/DEPLOYMENT_GUIDE.md).
 
 ---
 
