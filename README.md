@@ -1,21 +1,16 @@
 # StudyMate AI – AI-Powered Study Planner and Academic Assistant
 
 ![Project Banner](https://img.shields.io/badge/Agentic%20AI-Development%20Lab-blue?style=for-the-badge)
-![Practical](https://img.shields.io/badge/Practical%20No.-10-emerald?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Stack-React%2019%20%7C%20Node.js%20%7C%20Gemini%20API-indigo?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-slate?style=for-the-badge)
-
-**Department of Computer Science and Engineering**  
-**Maharashtra Institute of Technology, Chhatrapati Sambhaginagar**  
-*Academic Year: 2026–27*  
 
 ---
 
 ## 1. Project Overview
 
-**StudyMate AI** is an intelligent, tool-driven academic assistant and study scheduler engineered for undergraduate Computer Science and Engineering students. Rather than functioning as a standard text chatbot, StudyMate AI implements an autonomous Agentic AI workflow with controlled tool routing. 
+**StudyMate AI** is an intelligent, tool-driven academic assistant and study scheduler engineered for undergraduate Computer Science and Engineering students. Rather than functioning as a standard text chatbot, StudyMate AI implements an autonomous Agentic AI workflow with controlled tool routing.
 
 It empowers students to:
+
 1. **Clarify Academic Doubts:** Receive structured pedagogical explanations for core engineering subjects (Operating Systems, DBMS, Computer Networks, Algorithms) with code examples and exam takeaways.
 2. **Generate Phased Study Schedules:** Formulate realistic multi-day study timetables based on daily available hours, syllabus topics, and priority.
 3. **Manage Real Academic Tasks:** Track lab assignments, deadlines, and project milestones with persistent browser `LocalStorage`.
@@ -26,15 +21,15 @@ It empowers students to:
 
 ## 2. Key Modules & Features
 
-| Module | Core Functionality | Underlying Agentic Tool |
-|---|---|---|
-| **Home / Dashboard** | Dynamic study statistics, semester progress bar, urgent deadline reminders, and quick navigation. | Client LocalState Engine |
-| **AI Doubt Assistant** | Conversational chat interface with pedagogical structured answers and expandable execution trace badges. | `answerAcademicQuestion()` |
-| **Study Plan Generator** | Customizable timetable generator (hours/day, days, difficulty) with one-click **"Add to Task Manager"** conversion. | `generateStudyPlan()` |
-| **Academic Task Manager** | Working CRUD task management with priority badges, overdue alerts, search, and celebratory confetti on completion. | LocalStorage Engine + `canvas-confetti` |
-| **Study Recommendations** | Workload evaluator analyzing deadlines and high-priority items to recommend immediate focus areas. | `generateStudyRecommendation()` |
-| **Study History & Archives** | Persistent archive of past generated study plans with full multi-day view and JSON export. | LocalStorage Engine |
-| **Agent Inspector** | Live inspection panel displaying the 6-stage autonomous lifecycle and live registered tool schemas. | `GET /api/agent/tools` |
+| Module                       | Core Functionality                                                                                                  | Underlying Agentic Tool                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| **Home / Dashboard**         | Dynamic study statistics, semester progress bar, urgent deadline reminders, and quick navigation.                   | Client LocalState Engine                |
+| **AI Doubt Assistant**       | Conversational chat interface with pedagogical structured answers and expandable execution trace badges.            | `answerAcademicQuestion()`              |
+| **Study Plan Generator**     | Customizable timetable generator (hours/day, days, difficulty) with one-click **"Add to Task Manager"** conversion. | `generateStudyPlan()`                   |
+| **Academic Task Manager**    | Working CRUD task management with priority badges, overdue alerts, search, and celebratory confetti on completion.  | LocalStorage Engine + `canvas-confetti` |
+| **Study Recommendations**    | Workload evaluator analyzing deadlines and high-priority items to recommend immediate focus areas.                  | `generateStudyRecommendation()`         |
+| **Study History & Archives** | Persistent archive of past generated study plans with full multi-day view and JSON export.                          | LocalStorage Engine                     |
+| **Agent Inspector**          | Live inspection panel displaying the 6-stage autonomous lifecycle and live registered tool schemas.                 | `GET /api/agent/tools`                  |
 
 ---
 
@@ -107,20 +102,26 @@ StudyMate-AI/
 ## 5. Quick Start (Run Locally)
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v18 or higher; v24 recommended)
 - A free Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
 ### Step 1: Clone or Navigate to the Project
+
 ```bash
 cd c:\Users\gopal\Projects\StudyMate-AI
 ```
 
 ### Step 2: Configure Environment Variables
+
 Copy `server/.env.example` to `server/.env`:
+
 ```bash
 cp server/.env.example server/.env
 ```
+
 Open `server/.env` and paste your Gemini API key:
+
 ```env
 PORT=5000
 NODE_ENV=development
@@ -128,29 +129,37 @@ GEMINI_API_KEY=your_gemini_api_key_here
 CLIENT_URL=http://localhost:5173
 ```
 
-*(Note: Even if you run the backend before adding an API key, the server will start cleanly and the health check will indicate `geminiConfigured: false`. When a query is made, it will return a friendly instructional message.)*
+_(Note: Even if you run the backend before adding an API key, the server will start cleanly and the health check will indicate `geminiConfigured: false`. When a query is made, it will return a friendly instructional message.)_
 
 ### Step 3: Run the Backend Server
+
 In your first terminal:
+
 ```bash
 npm run server
 ```
-Server starts on: **`http://localhost:5000`**  
-- Health probe: `http://localhost:5000/api/health`  
-- Tool inspection: `http://localhost:5000/api/agent/tools`  
+
+Server starts on: **`http://localhost:5000`**
+
+- Health probe: `http://localhost:5000/api/health`
+- Tool inspection: `http://localhost:5000/api/agent/tools`
 
 ### Step 4: Run the Frontend Client
+
 In a second terminal:
+
 ```bash
 npm run client
 ```
-Frontend opens at: **`http://localhost:5173`**  
+
+Frontend opens at: **`http://localhost:5173`**
 
 ---
 
 ## 6. How the Agentic Workflow Operates
 
 When a student enters a message in the Doubt Assistant:
+
 1. **Input Ingestion:** The client sends the query, recent conversation history, and current task list to `POST /api/agent/chat`.
 2. **Intent Analysis:** The backend agent determines whether the request requires an academic explanation, a study plan, or workload prioritization.
 3. **Tool Execution:** The agent invokes the selected tool (`answerAcademicQuestion`, `generateStudyPlan`, `getPendingTasks`, or `generateStudyRecommendation`).
@@ -171,12 +180,12 @@ When a student enters a message in the Doubt Assistant:
 
 This project was developed for **Practical No. 10 (Agentic AI Development Lab)** by a two-member engineering team:
 
-| Team Member | Core Responsibilities |
-|---|---|
-| **Member 1** | • React frontend architecture, responsive layout, and navigation<br>• Dashboard analytics, semester progress tracker, and stat counters<br>• Study Planner UI, topic sliders, and plan-to-task conversion logic<br>• College project report document formatting and styling (`.docx` and `.md`) |
+| Team Member  | Core Responsibilities                                                                                                                                                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Member 1** | • React frontend architecture, responsive layout, and navigation<br>• Dashboard analytics, semester progress tracker, and stat counters<br>• Study Planner UI, topic sliders, and plan-to-task conversion logic<br>• College project report document formatting and styling (`.docx` and `.md`)              |
 | **Member 2** | • Express.js server architecture, route handling, and CORS configuration<br>• Google Gemini API integration and structured JSON prompt design<br>• Autonomous agent controller, intent classification, and tool registry<br>• System testing, test case documentation, and cloud deployment on Render/Vercel |
 
-*Both members participated in end-to-end integration testing and are fully prepared to demonstrate all modules during the practical lab examination.*
+_Both members participated in end-to-end integration testing and are fully prepared to demonstrate all modules during the practical lab examination._
 
 ---
 
@@ -190,12 +199,3 @@ This project was developed for **Practical No. 10 (Agentic AI Development Lab)**
 Full step-by-step instructions and architecture details are available in [`docs/DEPLOYMENT_GUIDE.md`](./docs/DEPLOYMENT_GUIDE.md).
 
 ---
-
-## 9. Examination Deliverables Index
-
-- 📄 **Project Report (DOCX):** [`docs/STUDYMATE_AI_PROJECT_REPORT.docx`](./docs/STUDYMATE_AI_PROJECT_REPORT.docx)
-- 📝 **Project Report (Markdown):** [`docs/PROJECT_REPORT.md`](./docs/PROJECT_REPORT.md)
-- 🏗️ **Architecture & Sequence Diagrams:** [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md)
-- ✅ **Testing Checklist & Test Results:** [`docs/TESTING_CHECKLIST.md`](./docs/TESTING_CHECKLIST.md)
-- 🚀 **Cloud Deployment Guide:** [`docs/DEPLOYMENT_GUIDE.md`](./docs/DEPLOYMENT_GUIDE.md)
-- 📸 **Screenshot Capture Checklist:** [`docs/screenshots/README.md`](./docs/screenshots/README.md)
