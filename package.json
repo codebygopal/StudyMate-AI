@@ -1,0 +1,24 @@
+{
+  "name": "studymate-ai",
+  "version": "1.0.0",
+  "description": "StudyMate AI – AI-Powered Study Planner and Academic Assistant (Agentic AI Lab Practical No. 10)",
+  "scripts": {
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "install:all": "npm run install:server && npm run install:client",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "test": "cd server && npm test"
+  },
+  "keywords": [
+    "agentic-ai",
+    "gemini-api",
+    "react",
+    "express",
+    "study-planner",
+    "academic-assistant"
+  ],
+  "author": "Department of Computer Science & Engineering, MIT Chhatrapati Sambhaginagar",
+  "license": "MIT"
+}
